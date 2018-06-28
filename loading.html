@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <canvas id="canvers" width="400px" height="400px"></canvas>
+</body>
+<script>
+        window.onload =function(){
+             var canvas = document.getElementById("canvers");
+             var ctx = canvas.getContext('2d');
+             var w = 400,
+                 h = 400,
+                 x = 200,
+                 y = 200,
+                 radius = 30;
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0,0,w,h);
+            var r = [3,4,4.5,5,5.5];
+            var angel = [128,110,90,68,45];
+            var alpha = [0.2,0.4,0.6,0.8,1];
+            setInterval(function(){
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0,0,w,h);
+                var x1 = [];
+                var y1 = [];
+                for(var i= 0 ;i < r.length;i++){
+                    ctx.beginPath();
+                    ctx.fillStyle = "rgba(156,236,255,"+alpha[i]+")";
+                    x1.push(200+Math.sin(angel[i]*Math.PI/180)*radius);
+                    y1.push(200+Math.cos(angel[i]*Math.PI/180)*radius);
+                    ctx.arc(x1[i],y1[i],r[i],0,2*Math.PI, true);
+                    ctx.closePath();
+                    ctx.fill();
+                    angel[i] -= 5;
+                }
+            },25);
+            
+            
+        };
+    </script>
+
+</html>

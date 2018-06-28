@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html:charset=utf-8">
+    <title>Smile To Us</title>
+</head>
+</head>
+<body>
+<div>
+    <canvas id="smileCanvas" width="10000" height="10000">Your browser doesn't support the "Canvas" tag~</canvas>
+</div>
+<script type="text/javascript" >
+var sc = document.getElementById("smileCanvas");
+var ctx0 = sc.getContext("2d");
+var i = 1;
+function drawSmile() {
+
+if (i<10){
+i=i+0.2;
+        }else {
+i=(i%10)+0.2;
+        }
+ctx0.clearRect(0, 0, 1000,1000);
+var now = new Date();
+var secd = now.getSeconds();
+var min = now.getMinutes();
+var hour = now.getHours();
+//小时必须获取浮点类型（小时+分数转化的小时）
+        //时间格式19:23:30
+        //将24小时进制装换为12小时进制
+hour = hour + (min / 60);
+hour = hour > 12 ? hour - 12 : hour;
+//绘制脸蛋
+ctx0.save();
+ctx0.fillStyle = "#ffff09";
+ctx0.translate(800, 450);//图片在界面上的位置坐标
+ctx0.rotate( secd*10*Math.PI / 180);
+ctx0.translate(-500,-200);//该图片中心点的坐标的相反数
+ctx0.beginPath();
+ctx0.arc(500, 200, 100*i, 0, Math.PI * 2, true);
+ctx0.closePath();
+ctx0.fill();
+ctx0.restore();
+
+//绘制眼睛
+ctx0.save();
+ctx0.beginPath();
+ctx0.fillStyle = "#1d1815";
+ctx0.translate(800, 450);
+ctx0.rotate(secd*10* Math.PI / 180);
+ctx0.translate(-500,-200);
+ctx0.arc(545, 160, 20*i, 0, Math.PI * 2, true);
+ctx0.closePath();
+ctx0.fill();
+ctx0.beginPath();
+ctx0.arc(450, 160, 20*i, 0, Math.PI * 2, true);
+ctx0.closePath();
+ctx0.fill();
+ctx0.restore();
+
+//绘制嘴巴
+ctx0.save();
+ctx0.beginPath();
+ctx0.fillStyle = "#f97d59";
+ctx0.strokeStyle = "#1d1815";
+ctx0.translate(800, 450);
+ctx0.rotate(secd*10*Math.PI / 180);
+ctx0.translate(-500,-200);
+var x = 500;               // x 坐标值
+var y = 220;               // y 坐标值
+var radius = 60*i;                    // 圆弧半径
+var startAngle = 60;                     // 开始点
+var endAngle = 220; // 结束点
+var anticlockwise = 3.5 % 2 == 0 ? false : true; // 顺时针或逆时针
+ctx0.arc(500, y, radius, startAngle, endAngle, anticlockwise);
+ctx0.fill();
+ctx0.stroke();
+ctx0.restore();
+    }
+
+setInterval(drawSmile, 1000);
+drawSmile();
+</script>
+</body>
+</html>

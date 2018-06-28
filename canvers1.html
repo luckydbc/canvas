@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <canvas id="canvers" width="150px" height="350px"></canvas>
+    </body>
+    <script>
+        window.onload =function(){
+            var canvers = document.getElementById("canvers");
+            var cxt = canvers.getContext('2d');
+            // cxt.strokeRect(30,30,100,80);
+            // cxt.strokeRect(29.5,99.5,100,80);
+            //cxt.strokeRect(25,25,100,100);
+            // cxt.beginPath();
+            // cxt.arc(75,75,50,0,Math.PI*2,true);
+            // cxt.closePath();
+            //cxt.fill();
+            //cxt.clearRect(50,55,50,40);
+            // var dots = cxt.getImageData(0,0,canvers.width , canvers.height);
+            // console.log(dots);
+
+
+            //切线画弧
+            cxt.moveTo(100,20);
+            cxt.arcTo(100,80,50,0,20);
+            cxt.stroke();
+
+            cxt.moveTo(150, 20);
+            cxt.arcTo(150,200,100,0,20);
+            cxt.stroke();
+
+            cxt.moveTo(150, 20);
+            cxt.arcTo(150,200,50,0,20);
+            cxt.stroke();
+
+            cxt.moveTo(150, 20);
+            cxt.arcTo(150,200,0,0,20);
+            cxt.stroke();
+
+            cxt.moveTo(150,200);
+            cxt.lineTo(50,0);
+            cxt.stroke();
+
+            cxt.moveTo(150,200);
+            cxt.lineTo(100,0);
+            cxt.stroke();
+
+            cxt.moveTo(150,200);
+            cxt.lineTo(0,0);
+            cxt.stroke();
+
+        };
+    </script>
+</html>

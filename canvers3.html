@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <canvas id="canvers" width="150px" height="150px"></canvas>
+    </body>
+    <script>
+        window.onload =function(){
+            var canvers = document.getElementById("canvers");
+            var cxt = canvers.getContext('2d');
+            cxt.beginPath();
+            cxt.moveTo(20,20);
+            cxt.quadraticCurveTo(60,150, 80, 20);
+            cxt.closePath();
+            cxt.stroke();
+        };
+    </script>
+</html>

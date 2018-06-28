@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+*{padding: 0;margin:0;}
+canvas{background: #fff;}
+</style>
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+    var flag = false;
+    drawSmail(100,100);
+    function drawSmail(x,y){
+        var canvas = document.getElementById("myCanvas");
+        var cxt = canvas.getContext("2d");
+        
+        cxt.clearRect(0,0,500,500);
+        cxt.save();
+        cxt.beginPath();
+        cxt.arc(x,y,50,0,2*Math.PI);
+        cxt.fillStyle = "yellow";
+        cxt.fill();
+        cxt.closePath();
+        cxt.save();
+        
+        //画眼睛
+        //cxt.restore();
+        cxt.beginPath();
+        cxt.arc(x-20,y-10,5,0,2*Math.PI);
+        cxt.arc(x+20,y-10,5,0,2*Math.PI);
+        cxt.fillStyle = "black"; 
+        cxt.fill();
+        cxt.closePath();
+        cxt.save();
+
+        cxt.beginPath();
+        cxt.moveTo(x-10,y+15);
+        cxt.lineTo(x+10,y+15);
+        cxt.arc(x,y+15,10,0,Math.PI);
+        cxt.fillStyle = "red";
+        cxt.fill();
+    }
+    $(document).mousedown(function(){
+        flag = true;
+    })
+    $(document).mousemove(function(e){
+        if(flag){
+            var x = e.clientX;
+            var y = e.clientY;
+            drawSmail(x,y);
+        }
+        //  if(x>=0&&x<=500&&y>=0&&y<=500){
+           
+        //     drawSmail(x,y);
+        // }
+    })
+    $(document).mouseup(function(){
+        flag = false;
+    })
+
+};
+</script>
+</head>
+<body>
+    <div id="div1">
+        <canvas id="myCanvas" width="500" height="500" style="releative"></canvas>
+    </div>
+</body>
+</html>

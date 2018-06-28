@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <canvas id="canvers" width="400px" height="400px"></canvas>
+</body>
+<script>
+        window.onload =function(){
+             var canvas = document.getElementById("canvers");
+             var ctx = canvas.getContext('2d');
+             var w = 400,
+                 h = 400,
+                 x = 200,
+                 y = 200,
+                 radius = 70,
+                 w1 = 10,
+                 h1 = 20,
+                 h2 = -40,
+                 hw1 = -5;
+             var start = 0;
+             function drawScreen(){
+                var apha = [0.2,0.3,0.4,0.5,0.6,0.7,0.8,1];
+                ctx.setTransform(1,0,0,1,0,0);
+                ctx.clearRect(0,0,w,h); 
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0,0,w,h);
+                ctx.translate(200,200);
+                
+                for(var i=0;i<8;i++){ 
+                    if(i == 0){
+                        ctx.rotate(start*45 * Math.PI / 180); 
+                    }else{
+                        ctx.rotate(45 * Math.PI / 180); 
+                        
+                    }
+                    ctx.fillStyle = "rgba(137,167,21,"+apha[i]+")";
+                    ctx.fillRect(hw1,h2,w1,h1);
+                    
+                }
+                if(start*45>=360){
+                    start = 1;
+                }else{
+                    start ++;
+                }
+                
+                
+             }
+            setInterval(drawScreen,80);      
+            
+        };
+    </script>
+
+</html>

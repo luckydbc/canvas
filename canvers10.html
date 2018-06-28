@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+*{padding: 0;margin:0;}
+body{background: #1b1b1b;}
+#div1{margin:50px auto; width:300px; height: 300px;}
+canvas{background: #fff;}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+    var c = document.getElementById('myCanvas');
+    var content = c.getContext('2d');
+    
+    //三次方贝塞尔曲线
+    content.strokeStyle = '#FA7E2A';
+    content.beginPath();
+    content.moveTo(25,175);
+    content.bezierCurveTo(70,60,150,200,170,150);
+    content.stroke();
+    content.globalCompositeOperation = 'source-over';
+    
+    //绘制起点、控制点、终点
+    content.strokeStyle = 'red';
+    content.beginPath();
+    content.moveTo(25,175);
+    content.lineTo(70,60);
+    content.lineTo(150,200);
+    content.lineTo(170,150);
+    content.stroke();
+    
+};
+</script>
+</head>
+<body>
+    <div id="div1">
+        <canvas id="myCanvas" width="300" height="200"></canvas>
+    </div>
+</body>
+</html>
